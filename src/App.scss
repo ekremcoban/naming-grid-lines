@@ -67,6 +67,11 @@
     // grid-template-rows: 100px 200px 400px 100px;
     // grid-template-columns: repeat(3, 1fr) 200px;
 
+    grid-template-rows: [header-start] 100px [header-end box-start] 200px
+    [box-end main-start] 400px [main-end footer-start] 100px        
+    [footer-end];
+    grid-template-columns: repeat(3, [col-start] 1fr [col-end]) 200px [grid-end];
+
     display: grid;
     grid-gap: 30px;
 }
@@ -79,31 +84,20 @@
     background-color: red;
 
     &__header {
-        grid-area: 1 / 1 / 2 / 5;
-    }
-
-    &__small-box-1 {
-        grid-area: 2 / 1 / 4 / 2;
-    }
-
-    &__small-box-2 {
-        grid-area: 2 / 2 / 4 / 3;
-    }
-
-    &__small-box-3 {
-        grid-area: 2 / 3 / 4 / 4;
+        grid-column: col-start 1 / grid-end;
     }
 
     &__slide-bar {
-        grid-area: 2 / 4 / 8 / 5;
+        grid-column: col-end 3 / grid-end;
+        grid-row: box-start / main-end;
     }
 
     &__main-content {
-        grid-area: 4 / 1 / 8 / 4;
+        grid-column: col-start 1 / col-end 3;
     }
 
     &__footer {
-        grid-area: 8 / 1 / 9 / 5;
+        grid-column: col-start 1 / grid-end;
     }
     
 }
